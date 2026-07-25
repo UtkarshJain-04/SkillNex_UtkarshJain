@@ -25,7 +25,7 @@ export const createUser = async(userData)=>{
 }
 
 export const findUserByIdAndUpdate = async(id, updates)=>{
-    return await User.findByIdAndUpdate(id, updates, {new:true})
+    return await User.findByIdAndUpdate(id, updates, {new:true}).select('-password')
 }
 
 export const findUserByIdAndDelete = async(id)=>{
