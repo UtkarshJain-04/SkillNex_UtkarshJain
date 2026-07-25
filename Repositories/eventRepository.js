@@ -40,5 +40,15 @@ export const findEventByIdAndDelete = async(id)=>{
     return await Event.findByIdAndDelete(id)
 }
 
+export const getAllEvents = async()=>{
+    return await Event.find()
+}
+
+export const getMyEvents = async(userId)=>{
+    return await Event.find({
+        organizer: userId
+    })
+}
+
 
 

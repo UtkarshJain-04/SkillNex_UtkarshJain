@@ -1,10 +1,13 @@
 import express from 'express'
-import { newEvent, updateEvent } from '../Controllers/eventController.js'
+import { deleteEvent, fetchMyEvents, fetchMyFeed, newEvent, updateEvent } from '../Controllers/eventController.js'
 import protect from '../Middlewares/authMiddleware.js'
 
 const router = express.Router()
 
 router.post('/create', protect, newEvent)
 router.put('/update/:eventId', protect, updateEvent)
+router.post('/delete/:eventId', protect, deleteEvent)
+router.get('/eventfeed', protect, fetchMyFeed)
+router.get('/myevents', protect, fetchMyEvents)
 
-export default router
+export default router;
