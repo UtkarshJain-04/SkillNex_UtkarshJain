@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import 'dotenv/config'
 import authRoutes from './Routes/authRoutes.js'
+import eventRoutes from './Routes/eventRoutes.js'
 const app = express()
 
 app.use(cors())
@@ -20,7 +21,8 @@ const connectDB = async()=>{
 
 connectDB();
 
-app.use('/api/auth',authRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/event', eventRoutes)
 
 console.log("profile routes mounted")
 const PORT = process.env.PORT
