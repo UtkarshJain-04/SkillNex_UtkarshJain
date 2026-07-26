@@ -1,18 +1,18 @@
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import useAuthStore from '../store/useAuthStore'
+// import useAuthStore from '../store/useAuthStore'
 
 
 const Login = () => {
 
- const {login} = useAuthStore()
+//  const {login} = useAuthStore()
     const navigate = useNavigate()
 const[loading, setLoading] = useState(false)
 
 const[formData, setFormData] = useState({
-    Email: '',
-    Password: ''
+    email: '',
+    password: ''
 })
 
 const[toast, setToast] = useState(null)
@@ -48,9 +48,9 @@ try {
             throw new Error(data.message || "login failed")
         }
 
-        console.log("login . jsx", data.user);
+        console.log("login . jsx", data.userData);
 
-        login(data.user, data.token)
+        // login(data.user, data.token)
         setToast({message: "Login successfully", type: 'success'})
         setTimeout(()=>{navigate('/')},1500)
 
@@ -68,10 +68,10 @@ try {
   <legend className="fieldset-legend">Login</legend>
 
   <label className="label" htmlFor='Email'>Email</label>
-  <input type="email" id='Email' className="input" placeholder="Email" value={formData.Email} onChange={handleChange} />
+  <input type="email" id='Email' className="input" placeholder="Email" value={formData.email} onChange={handleChange} name="email" />
 
   <label className="label" htmlFor='Password'>Password</label>
-  <input type="password" id='Password' className="input" placeholder="Password" value={formData.Password} onChange={handleChange} />
+  <input type="password" id='Password' className="input" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
 
   <button type='submit'   className="btn btn-neutral mt-4" disabled={loading}> {loading ? "Wait for a while":"Login"}
   </button>
