@@ -3,7 +3,7 @@ import Signup from './pages/Signup.jsx'
 import Layout from './layout/Layout.jsx'
 import Login from './pages/Login.jsx'
 
-// import EventFeed from './pages/EventFeed.jsx'
+ import EventFeed from './pages/EventFeed.jsx'
 
 function App(){
   return (
@@ -13,7 +13,7 @@ function App(){
       <Route path='/signup' element={<Signup/> }/>
       <Route path='/login' element={<Login/>}/>
    
-      {/* <Route path='/eventFeed' element={<EventFeed/>}/> */}
+      <Route path='/eventFeed' element={<EventFeed/>}/>
       </Route>
  </Routes>
   )
