@@ -6,8 +6,8 @@ import useAuthStore from '../store/useAuthStore'
 
 const Login = () => {
 
- const {login} = useAuthStore()
-    const navigate = useNavigate()
+ const {login, token} = useAuthStore()
+const navigate = useNavigate()
 const[loading, setLoading] = useState(false)
 
 const[formData, setFormData] = useState({
@@ -47,12 +47,10 @@ try {
         if(!response.ok){
             throw new Error(data.message || "login failed")
         }
-
-        console.log("login . jsx", data.userData);
-
-        login(data.userData.user, data.userData.token)
+        console.log("login.jsx", data.userData);
+        login(data?.userData?.user, data?.userData?.token)
         setToast({message: "Login successfully", type: 'success'})
-        setTimeout(()=>{navigate('/eventFeed')},1500)
+        setTimeout(()=>{navigate('/')},1500)
 
 } catch (err) {
         setToast({message: err.message, type: 'error'})

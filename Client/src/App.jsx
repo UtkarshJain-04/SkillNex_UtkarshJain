@@ -4,15 +4,16 @@ import Layout from './layout/Layout.jsx'
 import Login from './pages/Login.jsx'
 
  import EventFeed from './pages/EventFeed.jsx'
+import ConnectionFeed from './pages/connectionFeed.jsx'
 
 function App(){
   return (
  <Routes>
 
     <Route path='/' element={<Layout/>}>
-      <Route path='/signup' element={<Signup/> }/>
+      <Route index element={<Signup/> }/>
       <Route path='/login' element={<Login/>}/>
-   
+      <Route path='/connection-feed' element={<ConnectionFeed/>}/>
       <Route path='/eventFeed' element={<EventFeed/>}/>
       </Route>
  </Routes>

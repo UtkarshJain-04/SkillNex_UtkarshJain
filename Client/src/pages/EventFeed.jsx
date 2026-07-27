@@ -35,20 +35,16 @@ const[events,setEvents]=useState([])
        fetchEvents()
     },[token,login])
 
-
-
-
-
-
   return (
   <>
-    <div>EventFeed hai ye </div>
-
-  <div className="flex flex-wrap gap-4">
+    {loading ? "Loading...." : 
+    <div className="flex flex-wrap gap-4">
     {events?.map((event)=>(
                   <EventCard  event = {event}/>
             ))}
-  </div>
+  </div>}
+
+  
 
 </>
 

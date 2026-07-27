@@ -13,18 +13,18 @@ const useAuthStore = create(
 
     login: (userData, token)=>{
           console.log("login called", userData, token)
-        set(()=>(
+        set((state)=>(
         {
        
         user: userData,
         token: token
     }))},
 
-    logout: ()=>set(()=>({
+    logout: ()=>set((state)=>({
         user: null,
         token: null
     })),
-    refresh:(updatedUser)=>set(()=>({
+    refresh:(updatedUser)=>set((state)=>({
         user:updatedUser
     }))
 })

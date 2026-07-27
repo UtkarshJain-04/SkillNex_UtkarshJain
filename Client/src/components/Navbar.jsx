@@ -1,4 +1,4 @@
-
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
     <ul className="menu menu-horizontal px-1 flex gap-2 text-xl">
       <li><a>Events</a></li>
       <li><a>Mentors</a></li>
-      <li><a>People</a></li>
+      <li><Link to="/connection-feed">People</Link></li>
       <li><a>Projects</a></li>
     </ul>
   </div>
