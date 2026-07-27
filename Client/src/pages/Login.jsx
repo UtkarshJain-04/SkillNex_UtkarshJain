@@ -1,12 +1,12 @@
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import useAuthStore from '../store/useAuthStore'
+import useAuthStore from '../store/useAuthStore'
 
 
 const Login = () => {
 
-//  const {login} = useAuthStore()
+ const {login} = useAuthStore()
     const navigate = useNavigate()
 const[loading, setLoading] = useState(false)
 
@@ -50,9 +50,9 @@ try {
 
         console.log("login . jsx", data.userData);
 
-        // login(data.user, data.token)
+        login(data.userData.user, data.userData.token)
         setToast({message: "Login successfully", type: 'success'})
-        setTimeout(()=>{navigate('/')},1500)
+        setTimeout(()=>{navigate('/eventFeed')},1500)
 
 } catch (err) {
         setToast({message: err.message, type: 'error'})

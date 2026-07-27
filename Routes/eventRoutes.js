@@ -7,7 +7,7 @@ const router = express.Router()
 router.post('/create', protect, newEvent)
 router.put('/update/:eventId', protect, updateEvent)
 router.post('/delete/:eventId', protect, deleteEvent)
-router.get('/eventfeed', protect, fetchMyFeed)
+router.get('/eventfeed', fetchMyFeed)
 router.get('/myevents', protect, fetchMyEvents)
 
 export default router;
