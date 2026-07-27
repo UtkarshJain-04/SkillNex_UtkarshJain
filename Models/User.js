@@ -22,6 +22,12 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    profile_img: {
+    type: String,
+    default: function () {
+        return `https://api.dicebear.com/10.x/lorelei/svg?seed=${this._id}`
+    }
+    },
     bio:{
         type:String,
         required: true

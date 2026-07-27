@@ -31,3 +31,9 @@ export const findUserByIdAndUpdate = async(id, updates)=>{
 export const findUserByIdAndDelete = async(id)=>{
     return await User.findByIdAndDelete(id)
 }
+
+export const findIncludedUserIds = async(excludedIds)=>{
+    return await User.find({
+        _id: {$nin:excludedIds}
+    }).select('-password')
+}

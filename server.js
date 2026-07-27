@@ -4,6 +4,7 @@ import cors from 'cors'
 import 'dotenv/config'
 import authRoutes from './Routes/authRoutes.js'
 import eventRoutes from './Routes/eventRoutes.js'
+import connectionRoutes from './Routes/connectionRoutes.js'
 const app = express()
 
 app.use(cors())
@@ -23,6 +24,8 @@ connectDB();
 
 app.use('/api/auth', authRoutes)
 app.use('/api/event', eventRoutes)
+app.use('/api/request', connectionRoutes)
+app.use('/api/connection', connectionRoutes)
 
 console.log("profile routes mounted")
 const PORT = process.env.PORT

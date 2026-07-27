@@ -1,0 +1,82 @@
+@plugin "daisyui/theme" {
+  name: "skillnex_dark";
+  prefersdark: true;
+
+  --color-base-100: #0B0F19;
+  --color-base-200: #111827;
+  --color-base-300: #1F2937;
+
+  --color-base-content: #F8FAFC;
+
+  --color-primary: #4F46E5;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #06B6D4;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #8B5CF6;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #111827;
+  --color-neutral-content: #F8FAFC;
+
+  --color-info: #3B82F6;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  --radius-box: 1rem;
+  --radius-btn: 0.8rem;
+  --radius-badge: 999px;
+
+  --border: 1px;
+}
+@plugin "daisyui/theme" {
+  name: "skillnex_light";
+  default: true;
+  prefersdark: false;
+
+  /* Backgrounds */
+  --color-base-100: #FFFFFF;
+  --color-base-200: #FAFBFC;
+  --color-base-300: #F3F4F6;
+
+  /* Text */
+  --color-base-content: #111827;
+
+  /* Brand */
+  --color-primary: #5B7CFA;
+  --color-primary-content: #FFFFFF;
+
+  /* Pastel Palette */
+  --color-secondary: #8FD6FF;
+  --color-secondary-content: #0F172A;
+
+  --color-accent: #FFB86C;
+  --color-accent-content: #4A2B00;
+
+  --color-success: #A8E6B0;
+  --color-success-content: #14532D;
+
+  --color-warning: #FFE08A;
+  --color-warning-content: #78350F;
+
+  --color-error: #FFB4B4;
+  --color-error-content: #7F1D1D;
+
+  --color-info: #C7D2FE;
+  --color-info-content: #1E3A8A;
+
+  /* Neutral */
+  --color-neutral: #F8FAFC;
+  --color-neutral-content: #374151;
+
+  /* Border */
+  --border: 1px;
+  --color-neutral-border: #E5E7EB;
+
+  /* Radius */
+  --radius-box: 1rem;
+  --radius-btn: .8rem;
+  --radius-badge: 999px;
+}
