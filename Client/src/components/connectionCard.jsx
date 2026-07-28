@@ -34,7 +34,7 @@ const ConnectionCard = ({ conn, token, setConnections }) => {
                 <img 
                   src={conn.profile_img} 
                   alt={`${conn?.name}'s profile`} 
-                  className="w-12 h-12 rounded-full object-cover shadow-sm border border-gray-300"
+                  className="w-12 h-12 rounded-full object-cover shadow-sm border bg-white border-gray-300"
                 />
               ) : (
                 /* Fallback Initial if no image exists */

@@ -49,22 +49,13 @@ const EventCard = ({event}) => {
            <p>{event?.regDeadline.split("T")[0]}</p>
         </div>
       </div>
-
 <div className="flex justify-between">
-        
         <div>
           <div className="text-lg opacity-20">Team Size:</div>
           <p >{event?.teamSize}</p>
         </div>
-         
-      {/* <div> 
-        if(event?.mode==="Offline")<div><div className="text-lg opacity-20">Venue</div> <p >{event?.venue}</p></div>
-        </div> */}
-        
     {event?.mode==="Offline" ? (<div><div className="text-lg opacity-20">Venue</div><div>{event?.venue}</div></div>) : <p></p>}
-       
       </div>
-        
     </div>
   </div>
          <div></div>

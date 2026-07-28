@@ -1,0 +1,43 @@
+import { ProjectCard } from "../components/projectCard";
+import useAuthStore from "../store/useAuthStore"
+import { useEffect, useState } from "react"
+
+const ProjectFeed = () => {
+const { token } = useAuthStore();
+const [loading, setLoading] = useState(false) 
+const [projects, setProjects] =useState([])
+ useEffect(()=>{
+        const fetchProjects = async()=>{
+           try {
+             setLoading(true)
+             const response = await fetch('http://localhost:5001/api/project/feed',{
+              headers:{'Content-Type':'application/json',
+                Authorization: `Bearer ${token}`}
+             })
+             const result = await response.json()
+             console.log(result)
+             if (!response.ok) {
+              throw new Error(result.message);
+             }
+             setProjects(result.myProjectFeed)
+           } catch (err) {
+            console.log("error while fetching all projects", err);
+           } finally {
+            setLoading(false)
+           }
+        }
+       fetchProjects()
+    },[])
+
+  return (
+  <>
+    {loading ? "Loading...." : 
+    <div className="flex flex-wrap gap-4">
+    {projects?.map((project)=>(
+        <ProjectCard project = {project}/>))}
+  </div>}
+</>
+  )
+}
+
+export default ProjectFeed

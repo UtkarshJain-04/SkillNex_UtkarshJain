@@ -5,19 +5,21 @@ import ConnectionCard from "../components/connectionCard.jsx"
 
 
 const ConnectionFeed = () => {
-    const {login, token} = useAuthStore()
-    const [loading, setLoading] = useState(true)
+    const {token} = useAuthStore()
+    const [loading, setLoading] = useState(false)
     const [connections, setConnections] = useState([])
     useEffect(()=>{
         const fetchConnectionFeed = async()=>{
             try {
+                console.log("Token at connection feed before api call",token)
                 setLoading(true)
                 const response = await fetch("http://localhost:5001/api/connection/feed",{
-                    method:'GET',
+                  
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
              })
                 const result = await response.json()
+                console.log(result)
                 if(!response.ok){
                     throw new Error(result.message)
                 }
@@ -30,15 +32,15 @@ const ConnectionFeed = () => {
             }
         }
         fetchConnectionFeed()
-    },[login, token])
+    },[])
     
   return (
     <>
     {loading ? "Loading...." : 
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-3 justify-center">
     {connections?.map((conn) => (
         <ConnectionCard conn = {conn}
-        token = {token}
+       
         setConnections = {setConnections}/>
     ))}
     </div>}

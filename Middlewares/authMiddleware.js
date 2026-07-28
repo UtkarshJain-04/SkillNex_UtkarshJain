@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 
 const protect = (req, res, next) =>{
     const authHeader = req.headers.authorization
+
     if(!authHeader || !authHeader.startsWith('Bearer ')){
         return res.status(400).json({
             success: false,

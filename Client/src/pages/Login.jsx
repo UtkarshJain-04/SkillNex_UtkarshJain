@@ -2,11 +2,11 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '../store/useAuthStore'
-
+import bg_image from '../assets/bg.jpg'
 
 const Login = () => {
 
- const {login, token} = useAuthStore()
+ const {login} = useAuthStore()
 const navigate = useNavigate()
 const[loading, setLoading] = useState(false)
 
@@ -61,20 +61,30 @@ try {
 }
 
   return (
-   <form onSubmit={handleSubmit} >
-    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend className="fieldset-legend">Login</legend>
-
-  <label className="label" htmlFor='Email'>Email</label>
+   <div className='min-h-screen'>
+    <img src={bg_image} alt="" className="absolute inset-0 h-full w-full object-cover"/>
+    <div className='flex justify-center absolute inset-0 bg-black/40'>
+    <form onSubmit={handleSubmit} className='relative z-10 flex min-h-screen items-center justify-center'>
+    <fieldset className="fieldset w-105
+      rounded-3xl
+      border border-white/20
+      bg-white/10
+      backdrop-blur-xl
+      shadow-[0_8px_32px_rgba(0,0,0,0.4)]
+      p-10 flex flex-col">
+  <div className='flex flex-col items-center gap-3'>
+  <label className="label text-base text-white font-semibold" htmlFor='Email'>Email</label>
   <input type="email" id='Email' className="input" placeholder="Email" value={formData.email} onChange={handleChange} name="email" />
-
-  <label className="label" htmlFor='Password'>Password</label>
+  <label className="label text-base text-white font-semibold" htmlFor='Password'>Password</label>
   <input type="password" id='Password' className="input" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
 
-  <button type='submit'   className="btn btn-neutral mt-4" disabled={loading}> {loading ? "Wait for a while":"Login"}
+  <button type='submit' className="btn btn-neutral mt-4 w-80" disabled={loading}> {loading ? "Wait for a while":"Login"}
   </button>
+  </div>
 </fieldset>
 </form>
+   </div>
+   </div>
   )
 }
 
