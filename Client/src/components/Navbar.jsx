@@ -8,10 +8,10 @@ const Navbar = () => {
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 flex gap-2 text-xl">
-      <li><a>Events</a></li>
+      <li><Link to="/eventfeed">Events</Link></li>
       <li><a>Mentors</a></li>
       <li><Link to="/connection-feed">People</Link></li>
-      <li><a>Projects</a></li>
+      <li><Link to="/project-feed">Projects</Link></li>
     </ul>
   </div>
   <div className="navbar-end mr-3">

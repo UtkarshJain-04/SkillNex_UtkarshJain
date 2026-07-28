@@ -11,14 +11,11 @@ const useAuthStore = create(
     user: null,
     token: null,
 
-    login: (userData, token)=>{
-          console.log("login called", userData, token)
-        set((state)=>(
-        {
-       
+    login: (userData, token)=>set((state)=>({
+        
         user: userData,
         token: token
-    }))},
+    })),
 
     logout: ()=>set((state)=>({
         user: null,
