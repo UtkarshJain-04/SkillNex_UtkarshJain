@@ -6,6 +6,7 @@ import authRoutes from './Routes/authRoutes.js'
 import eventRoutes from './Routes/eventRoutes.js'
 import connectionRoutes from './Routes/connectionRoutes.js'
 import projectRoutes from './Routes/projectRoutes.js'
+import eventAiRoutes from './Routes/eventAiRoutes.js'
 const app = express()
 
 app.use(cors())
@@ -28,6 +29,7 @@ app.use('/api/event', eventRoutes)
 app.use('/api/request', connectionRoutes)
 app.use('/api/connection', connectionRoutes)
 app.use('/api/project', projectRoutes)
+app.use('/api/event-ai', eventAiRoutes)
 
 console.log("profile routes mounted")
 const PORT = process.env.PORT

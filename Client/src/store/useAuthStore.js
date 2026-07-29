@@ -1,33 +1,31 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
-
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 const useAuthStore = create(
-    persist(
-    
-    (set)=>({
+  persist(
+    (set) => ({
+      user: null,
+      token: null,
 
+      login: (userData, token) =>
+        set((state) => ({
+          user: userData,
+          token: token,
+        })),
 
-    user: null,
-    token: null,
+      logout: () =>
+        set((state) => ({
+          user: null,
+          token: null,
+        })),
+      refresh: (updatedUser) =>
+        set((state) => ({
+          user: updatedUser,
+        })),
+    }),
 
-    login: (userData, token)=>set((state)=>({
-        
-        user: userData,
-        token: token
-    })),
+    { name: "loginStorage", storage: createJSONStorage(() => sessionStorage) },
+  ),
+);
 
-    logout: ()=>set((state)=>({
-        user: null,
-        token: null
-    })),
-    refresh:(updatedUser)=>set((state)=>({
-        user:updatedUser
-    }))
-})
-
-    ,{name: 'loginStorage'})
-
-)
-
-export default useAuthStore
+export default useAuthStore;

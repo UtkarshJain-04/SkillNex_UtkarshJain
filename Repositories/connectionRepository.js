@@ -39,7 +39,7 @@ export const findPendingRequestsForUser = async(userId)=>{
     return await connection.find({
         status:'pending',
         receiver:userId
-    })
+    }).populate('sender','name bio college')
 }
 
 export const findAcceptedConnectionsForUser = async(userId)=>{
@@ -49,7 +49,7 @@ export const findAcceptedConnectionsForUser = async(userId)=>{
             {receiver:userId},
             {sender:userId}
         ]
-    })
+    }).populate('receiver','name bio college').populate('sender','name bio college')
 }
 
 export const findFeedInfoForUser = async(userId)=>{

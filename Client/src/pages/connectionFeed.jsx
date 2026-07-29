@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import useAuthStore from "../store/useAuthStore.js"
 import ConnectionCard from "../components/connectionCard.jsx"
-
+import {Link} from 'react-router-dom'
 
 const ConnectionFeed = () => {
     const {token} = useAuthStore()
@@ -37,13 +37,19 @@ const ConnectionFeed = () => {
   return (
     <>
     {loading ? "Loading...." : 
-    <div className="flex flex-wrap gap-3 justify-center">
-    {connections?.map((conn) => (
+    <div className="flex flex-col gap-2">
+        <div className="flex justify-end mt-5 mr-5 gap-3">
+                <button className="btn bg-emerald-400 text-white font-semibold text-lg rounded-xl"><Link to="/accepted-connections">Connections</Link></button>
+                <button className="btn bg-orange-400 text-white font-semibold text-lg rounded-xl"><Link to="/pending-requests">Pending Requests</Link></button>
+              </div>
+        <div className="flex flex-wrap gap-3 justify-center">
+        {connections?.map((conn) => (
         <ConnectionCard conn = {conn}
-       
+        token = {token}
         setConnections = {setConnections}/>
     ))}
-    </div>}
+    </div>
+        </div>}
     
     </>
   )

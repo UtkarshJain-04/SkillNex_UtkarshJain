@@ -52,3 +52,12 @@ export const getAcceptedConnection = async(userId)=>{
     return await acceptedConnections
 }
 
+export const getPendingRequestsForUser = async(userId)=>{
+    const user = await findUserById(userId)
+    if(!user){
+        throw new Error("User not found")
+    }
+    const pendingRequests = await findPendingRequestsForUser(userId)
+    return await pendingRequests
+}
+

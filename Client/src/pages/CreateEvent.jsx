@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
+import { Link } from 'react-router-dom';
 
 export default function CreateEvent() {
   const navigate = useNavigate();
@@ -59,7 +60,6 @@ export default function CreateEvent() {
       if (!response.ok) {
         throw new Error("Failed to create event.");
       }
-
       setToast({
         message: "Event created successfully",
         type: "success",
@@ -79,14 +79,16 @@ export default function CreateEvent() {
 
   const inputClass =
     "w-full p-3 border border-gray-200 rounded-md text-base text-gray-800 outline-none bg-white transition-colors duration-200 placeholder-gray-400 focus:border-black";
-  const labelClass = "mb-2 text-sm text-gray-500";
+  const labelClass = "mb-2 text-base text-gray-600";
   const formGroupClass = "flex flex-col mb-5";
 
   return (
-    <div className="max-w-lg mx-auto my-12 p-8 bg-white rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.05)] font-sans box-border">
-      <h2 className="text-2xl font-semibold text-center text-gray-800 mb-8 mt-0">
-        Create New Event
-      </h2>
+    <div className="flex flex-col">
+        <div className="flex justify-start mt-5 ml-5">
+            <button className="btn bg-red-400 text-white font-semibold text-lg rounded-xl"><Link to="/eventfeed">🢀 Back</Link></button>
+        </div>
+        <div className="max-w-4/6 mx-auto my-8 p-8 bg-white rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.05)] font-sans box-border">
+      <h2 className="text-5xl font-bold text-center text-gray-800 mb-8 mt-0">New Event</h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className={formGroupClass}>
@@ -121,7 +123,8 @@ export default function CreateEvent() {
           ></textarea>
         </div>
 
-        <div className={formGroupClass}>
+        <div className="flex justify-between gap-2">
+            <div className='mb-5 w-sm'>
           <label htmlFor="category" className={labelClass}>
             Category *
           </label>
@@ -137,7 +140,7 @@ export default function CreateEvent() {
           />
         </div>
 
-        <div className={formGroupClass}>
+        <div className='mb-5 w-sm'>
           <label htmlFor="mode" className={labelClass}>
             Mode *
           </label>
@@ -153,6 +156,7 @@ export default function CreateEvent() {
             <option value="Offline">Offline</option>
             <option value="Hybrid">Hybrid</option>
           </select>
+        </div>
         </div>
 
         <div className={formGroupClass}>
@@ -171,7 +175,8 @@ export default function CreateEvent() {
           />
         </div>
 
-        <div className={formGroupClass}>
+        <div className="flex justify-between">
+            <div className='mb-5 w-sm'>
           <label htmlFor="startDate" className={labelClass}>
             Start Date *
           </label>
@@ -186,7 +191,7 @@ export default function CreateEvent() {
           />
         </div>
 
-        <div className={formGroupClass}>
+        <div className='mb-5 w-sm'>
           <label htmlFor="endDate" className={labelClass}>
             End Date *
           </label>
@@ -200,8 +205,10 @@ export default function CreateEvent() {
             className={inputClass}
           />
         </div>
+        </div>
 
-        <div className={formGroupClass}>
+        <div className="flex justify-between">
+            <div className='mb-5 w-sm'>
           <label htmlFor="regDeadline" className={labelClass}>
             Registration Deadline *
           </label>
@@ -216,7 +223,7 @@ export default function CreateEvent() {
           />
         </div>
 
-        <div className={formGroupClass}>
+        <div className='mb-5 w-sm'>
           <label htmlFor="prize" className={labelClass}>
             Prize Amount
           </label>
@@ -231,8 +238,10 @@ export default function CreateEvent() {
             className={`${inputClass}`}
           />
         </div>
+        </div>
 
-        <div className={formGroupClass}>
+        <div className="flex justify-between">
+            <div className='mb-5 w-sm'>
           <label htmlFor="teamSize" className={labelClass}>
             Team Size (1-4)
           </label>
@@ -250,7 +259,7 @@ export default function CreateEvent() {
           </select>
         </div>
 
-        <div className={formGroupClass}>
+        <div className='mb-5 w-sm'>
           <label htmlFor="status" className={labelClass}>
             Event Status *
           </label>
@@ -267,10 +276,11 @@ export default function CreateEvent() {
             <option value="Completed">Completed</option>
           </select>
         </div>
+        </div>
 
         <div className={formGroupClass}>
           <label htmlFor="venue" className={labelClass}>
-            Venue{" "}
+            Venue
           </label>
           <input
             type="text"
@@ -282,23 +292,22 @@ export default function CreateEvent() {
             className={inputClass}
           />
         </div>
-
         <button
           type="submit"
           disabled={isSubmitting}
           className="w-full p-4 mt-4 bg-black text-white border-none rounded-md text-lg font-semibold cursor-pointer transition-colors duration-200 hover:bg-gray-800 disabled:bg-gray-500 disabled:cursor-not-allowed"
         >
-          {isSubmitting ? "Submitting..." : "Submit Event"}
+          {isSubmitting ? "Adding..." : "Add Event"}
         </button>
       </form>
       {toast && (
-
       <div className="toast toast-top">
       <div className={`alert ${toast.type==='success'? 'alert-success':'alert-error'}`}>
         <span>{toast.message}</span>
       </div>
       </div>
       )}
+    </div>
     </div>
   );
 }
