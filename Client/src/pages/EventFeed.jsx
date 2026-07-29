@@ -5,8 +5,29 @@ import {Link} from 'react-router-dom'
 
 const EventFeed = () => {
 const {token} =useAuthStore();
-const[loading,setLoading]= useState(false) 
-const[events,setEvents]=useState([])
+const [loading,setLoading]= useState(false) 
+const [events,setEvents] = useState([])
+const [recommendedEvents, setRecommendedEvents] = useState([])
+const [showAiRecommendations, setShowAiRecommendations] = useState(false);
+  const handleEventAi = async()=>{
+      try {
+        const response = await fetch('http://localhost:5001/api/event-ai/analyze',{
+        headers:{'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`},
+        method: "POST"
+        })
+      const result = await response.json()
+      if(!response.ok){
+        throw new Error(result.message)
+      }
+      setRecommendedEvents(result.eventAiResult)
+      setShowAiRecommendations(true)
+      } catch (error) {
+        console.log(error.message)
+      } finally {
+        setLoading(false)
+      }
+  }
  useEffect(()=>{
         const fetchEvents = async()=>{
            try {
@@ -22,12 +43,7 @@ const[events,setEvents]=useState([])
              if (!response.ok) {
               throw new Error(result.message);
              }
-             console.log(result?.userData?.user)
-              console.log(result?.userData?.token)
-             console.log("Token before error line", token)
-            //  login(result?.userData?.user, result?.userData?.token);
              setEvents(result.myEventFeed)
-           
            } catch (err) {
             console.log("error while fetching all events", err);
            } finally {
@@ -39,24 +55,69 @@ const[events,setEvents]=useState([])
 
   return (
   <>
-    {loading ? "Loading...." : 
-    <div className="flex flex-col gap-0.5">
-      <div className="flex justify-end mt-5 mr-5">
-        <button className="btn bg-blue-400 text-white font-semibold text-lg"><Link to="/create-event">Add Event +</Link></button>
+    {loading ? (
+      "Loading..."
+    ) : (
+      <div className="flex flex-col gap-4">
+
+        {/* Top Bar */}
+        <div className="flex justify-between items-center m-5">
+
+          <div className="flex items-center gap-4">
+            {showAiRecommendations && (
+              <h2 className="text-2xl font-bold text-emerald-600">
+                AI Recommended Events
+              </h2>
+            )}
+
+            <button
+              className="btn bg-emerald-400 text-white font-semibold text-lg rounded-xl"
+              onClick={() => {
+                if (showAiRecommendations) {
+                  setShowAiRecommendations(false);
+                } else {
+                  handleEventAi();
+                }
+              }}
+            >
+              {showAiRecommendations
+                ? "Show All Events"
+                : "Recommend"}
+            </button>
+          </div>
+
+          <div className="flex gap-3">
+            <Link
+              to="/create-event"
+              className="btn bg-blue-400 text-white font-semibold text-lg rounded-xl"
+            >
+              Add Event +
+            </Link>
+
+            <Link
+              to="/myevents"
+              className="btn bg-orange-400 text-white font-semibold text-lg rounded-xl"
+            >
+              My Events
+            </Link>
+          </div>
+
+        </div>
+
+        {/* Event Cards */}
+        <div className="flex flex-wrap gap-4">
+          {(showAiRecommendations ? recommendedEvents : events).map((event) => (
+            <EventCard
+              key={event._id || event.title || event.Title}
+              event={event}
+            />
+          ))}
+        </div>
+
       </div>
-      <div className="flex flex-wrap gap-4">
-    {events?.map((event)=>(
-        <EventCard  event = {event}/>
-            ))}
-  </div>
-    </div>
-    }
-
-  
-
-</>
-
-  )
+    )}
+  </>
+);
 }
 
 export default EventFeed

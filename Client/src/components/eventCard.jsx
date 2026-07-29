@@ -1,13 +1,10 @@
 
 const EventCard = ({event}) => {
-    
-
+  
   return (
     <div>
-    <a href="#" className="hover-3d my-12 mx-1 cursor-pointer ">
-  
- 
-  <div className="card w-90 bg-[#272324] text-[#FDF8F5] bg-[radial-gradient(circle_at_bottom_left,#ffffff04_35%,transparent_36%),radial-gradient(circle_at_top_right,#ffffff04_35%,transparent_36%)] bg-size-[4.95em_4.95em] ml-8">
+  <a href="" className="hover-3d my-12 mx-1 cursor-pointer ">
+  <div className="card w-90 bg-[#000000] text-[#ffffff] bg-[radial-gradient(circle_at_bottom_left,#ffffff04_35%,transparent_36%),radial-gradient(circle_at_top_right,#ffffff04_35%,transparent_36%)] bg-size-[4.95em_4.95em] ml-8">
     <div className="card-body">
       <div className="flex  flex-col gap-2 justify-between mb-10">
         <div className="font-bold">{event?.title}</div>
@@ -70,10 +67,6 @@ const EventCard = ({event}) => {
   
 </a>
 </div>
-   
-       
-
-  
   )
 }
 

@@ -1,4 +1,4 @@
-import { getAcceptedConnection, getMyConnectionFeed, respondToRequest, sendConnectionRequest } from "../Services/connectionService.js"
+import { getAcceptedConnection, getMyConnectionFeed, getPendingRequestsForUser, respondToRequest, sendConnectionRequest } from "../Services/connectionService.js"
 
 export const sendRequest = async(req, res)=>{
     try {
@@ -76,6 +76,23 @@ export const fetchMyAcceptedConnection = async(req, res)=>{
             success: true,
             message: "Accepted Connections fetched successfully",
             myAcceptedConnections
+        })
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+export const fetchPendingRequests = async(req, res)=>{
+    try {
+        const userId = req.id
+        const myPendingRequests = await getPendingRequestsForUser(userId)
+        res.status(200).json({
+            success: true,
+            message: "Pending requests fetched successfully",
+            myPendingRequests
         })
     } catch (error) {
         res.status(400).json({
