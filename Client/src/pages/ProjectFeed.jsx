@@ -4,41 +4,59 @@ import { useEffect, useState } from "react"
 import { API_URL } from '../config'
 
 const ProjectFeed = () => {
-const { token } = useAuthStore();
-const [loading, setLoading] = useState(false) 
-const [projects, setProjects] =useState([])
- useEffect(()=>{
-        const fetchProjects = async()=>{
-           try {
-             setLoading(true)
-             const response = await fetch(`${API_URL}/api/project/feed`,{
-              headers:{'Content-Type':'application/json',
-                Authorization: `Bearer ${token}`}
-             })
-             const result = await response.json()
-             console.log(result)
-             if (!response.ok) {
-              throw new Error(result.message);
-             }
-             setProjects(result.myProjectFeed)
-           } catch (err) {
-            console.log("error while fetching all projects", err);
-           } finally {
-            setLoading(false)
-           }
+  const { token } = useAuthStore();
+  const [loading, setLoading] = useState(false);
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${API_URL} /api/project/feed`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const result = await response.json();
+        console.log(result);
+        if (!response.ok) {
+          throw new Error(result.message);
         }
-       fetchProjects()
-    },[])
+        setProjects(result.myProjectFeed);
+      } catch (err) {
+        console.log("error while fetching all projects", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   return (
-  <>
-    {loading ? "Loading...." : 
-    <div className="flex flex-wrap gap-4">
-    {projects?.map((project)=>(
-        <ProjectCard project = {project}/>))}
-  </div>}
-</>
-  )
-}
+    <>
+      {loading ? (
+        "Loading...."
+      ) : (
+        <div className="flex flex-col">
+          <div className="mr-5 mt-5 flex justify-end">
+            <Link
+              to="/create-project"
+              className="btn bg-yellow-400 text-white font-semibold text-lg rounded-xl"
+            >
+              Add Project +
+            </Link>
+          </div>
+          <div>
+            <div className="flex flex-wrap gap-4">
+              {projects?.map((project) => (
+                <ProjectCard project={project} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 
 export default ProjectFeed
