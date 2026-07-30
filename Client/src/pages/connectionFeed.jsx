@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import useAuthStore from "../store/useAuthStore.js"
 import ConnectionCard from "../components/connectionCard.jsx"
 import {Link} from 'react-router-dom'
+ import { API_URL } from '../config'
 
 const ConnectionFeed = () => {
     const {token} = useAuthStore()
@@ -13,7 +14,7 @@ const ConnectionFeed = () => {
             try {
                 console.log("Token at connection feed before api call",token)
                 setLoading(true)
-                const response = await fetch("http://localhost:5001/api/connection/feed",{
+                const response = await fetch(`${API_URL}/api/connection/feed`,{
                   
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
