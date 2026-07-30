@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import useAuthStore from "../store/useAuthStore.js"
 import {Link} from 'react-router-dom'
 import PeopleCard from "../components/peopleCard.jsx"
+import { API_URL } from '../config'
 
 const ConnectedPeople = () => {
     const {token, user} = useAuthStore()
@@ -12,7 +13,7 @@ const ConnectedPeople = () => {
         const fetchConnected= async()=>{
             try {
                 setLoading(true)
-                const response = await fetch("http://localhost:5001/api/connection/accepted",{
+                const response = await fetch(`${API_URL}/api/connection/accepted`,{
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
              })
