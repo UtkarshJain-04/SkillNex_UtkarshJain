@@ -36,6 +36,11 @@ export default function CreateEvent() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+if(formData.endDate < formData.startDate){
+alert("Enter valid date")
+}
+    
     setFormData((prev) => ({
       ...prev,
       [name]: name === "number" || name === "teamSize" ? Number(value) : value,
