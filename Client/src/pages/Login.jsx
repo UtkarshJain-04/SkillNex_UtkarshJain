@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { Link } from 'react-router-dom'
+import { API_URL } from '../config'
 
 const Login = () => {
   const { login } = useAuthStore();
@@ -34,7 +35,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5001/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
