@@ -62,9 +62,6 @@ const Navbar = () => {
               <span>My Account</span>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li>
               <Link to="/myevents">My Events</Link>
             </li>
             <li>
