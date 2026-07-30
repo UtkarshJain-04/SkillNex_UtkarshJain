@@ -34,7 +34,7 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
            try {
               setLoading(true)
             console.log("Event feed Token before api call:", token)
-             const response = await fetch('http://localhost:5001/api/event/eventfeed',{
+             const response = await fetch(`${API_URL}/api/event/eventfeed`,{
               headers:{
                 'Content-Type':'application/json',
                 Authorization: `Bearer ${token}`
