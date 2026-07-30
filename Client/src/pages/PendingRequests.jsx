@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import useAuthStore from "../store/useAuthStore.js"
 import RequestCard from '../components/requestCard.jsx'
 import { Link } from 'react-router-dom'
+import { API_URL } from '../config'
 
 const PendingRequests = () => {
     const {token} = useAuthStore()
@@ -13,7 +14,7 @@ const PendingRequests = () => {
         const fetchPendingRequests = async()=>{
             try {
                 setLoading(true)
-                const response = await fetch("http://localhost:5001/api/connection/pending",
+                const response = await fetch(`${API_URL}/api/connection/pending`,
                     {headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
                 })
