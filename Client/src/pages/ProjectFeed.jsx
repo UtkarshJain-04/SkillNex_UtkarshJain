@@ -12,7 +12,7 @@ const ProjectFeed = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${API_URL} /api/project/feed`, {
+        const response = await fetch(`${API_URL}/api/project/feed`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
