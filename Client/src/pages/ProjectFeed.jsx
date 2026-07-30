@@ -2,6 +2,7 @@ import { ProjectCard } from "../components/projectCard";
 import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import { API_URL } from '../config'
+import { Link } from 'react-router-dom';
 
 const ProjectFeed = () => {
   const { token } = useAuthStore();
