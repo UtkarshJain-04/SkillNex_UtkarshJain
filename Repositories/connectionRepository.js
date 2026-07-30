@@ -1,4 +1,4 @@
-import connection from "../models/Connection.js";
+import connection from "../Models/Connection.js";
 
 export const createConnection = async(senderId, receiverId)=>{
     console.log("sender:",senderId)

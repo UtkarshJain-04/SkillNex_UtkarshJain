@@ -1,5 +1,5 @@
 import { createConnection, findAcceptedConnectionsForUser, findAllRequestsForUser, findExistingRequest, findFeedInfoForUser, findPendingRequestsForUser, findRequestById, updateRequestStatus } from "../Repositories/connectionRepository.js"
-import { findIncludedUserIds, findUserById } from "../Repositories/UserRepository.js"
+import { findIncludedUserIds, findUserById } from "../Repositories/userRepository.js"
 
 export const sendConnectionRequest = async(sender, receiver)=>{
     if(sender === receiver){
