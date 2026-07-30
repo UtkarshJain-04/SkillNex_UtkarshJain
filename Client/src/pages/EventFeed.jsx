@@ -2,6 +2,7 @@ import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import EventCard from "../components/eventCard"
 import {Link} from 'react-router-dom'
+import { API_URL } from '../config'
 
 const EventFeed = () => {
 const {token} =useAuthStore();
@@ -11,7 +12,7 @@ const [recommendedEvents, setRecommendedEvents] = useState([])
 const [showAiRecommendations, setShowAiRecommendations] = useState(false);
   const handleEventAi = async()=>{
       try {
-        const response = await fetch('http://localhost:5001/api/event-ai/analyze',{
+        const response = await fetch(`${API_URL}/api/event-ai/analyze`,{
         headers:{'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`},
         method: "POST"
