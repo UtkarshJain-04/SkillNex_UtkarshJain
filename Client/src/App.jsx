@@ -4,7 +4,7 @@ import Layout from "./layout/Layout.jsx";
 import Login from "./pages/Login.jsx";
 import ProjectFeed from "./pages/ProjectFeed.jsx";
 import EventFeed from "./pages/EventFeed.jsx";
-import ConnectionFeed from "./pages/ConnectionFeed.jsx";
+import ConnectionFeed from "./pages/connectionFeed.jsx";
 import CreateEvent from "./pages/CreateEvent.jsx";
 import JobFeed from "./pages/JobFeed.jsx";
 import MyEvents from "./pages/MyEvents.jsx";
