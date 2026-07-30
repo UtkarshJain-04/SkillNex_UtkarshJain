@@ -64,7 +64,7 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
         {/* Top Bar */}
         <div className="flex justify-between items-center m-5">
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 justify-center">
             {showAiRecommendations && (
               <h2 className="text-2xl font-bold text-emerald-600">
                 AI Recommended Events
@@ -106,7 +106,7 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
         </div>
 
         {/* Event Cards */}
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
           {(showAiRecommendations ? recommendedEvents : events).map((event) => (
             <EventCard
               key={event._id || event.title || event.Title}
