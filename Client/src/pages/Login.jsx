@@ -220,7 +220,7 @@ const Login = () => {
 
 {toast && (
 
-            <div className="toast toast-end">
+            <div className="toast toast-top">
             <div className={`alert ${toast.type === 'success' ? 'alert-success': 'alert-error'}`}>
             <span>{toast.message}</span>
             </div>
