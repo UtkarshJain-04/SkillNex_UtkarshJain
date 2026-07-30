@@ -1,7 +1,7 @@
-
+ import { API_URL } from '../config'
 const ConnectionCard = ({ conn, token, setConnections }) => {
     const handleSendRequest = async()=>{
-        const response = await fetch(`http://localhost:5001/api/connection/send/${conn?._id}`,{
+        const response = await fetch(`${API_URL}/api/connection/send/${conn?._id}`,{
                     method:'POST',
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
