@@ -40,9 +40,7 @@ export default function CreateEvent() {
 if(formData.endDate < formData.startDate){
 alert("Enter valid End date")
 }
-if(formData.regDeadline > formData.startDate){
-alert("Enter valid Registration deadline")
-}
+
     
     setFormData((prev) => ({
       ...prev,
