@@ -1,7 +1,7 @@
-
+import { API_URL } from '../config'
 const RequestCard = ({ request, token, setRequests, setToast }) => {
     const handleAccept = async()=>{
-        const response = await fetch(`http://localhost:5001/api/connection/accept/${request?._id}`,{
+        const response = await fetch(`${API_URL}/api/connection/accept/${request?._id}`,{
                     method:'PUT',
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
@@ -19,7 +19,7 @@ const RequestCard = ({ request, token, setRequests, setToast }) => {
     }
 
     const handleReject = async()=>{
-        const response = await fetch(`http://localhost:5001/api/connection/reject/${request?._id}`,{
+        const response = await fetch(`${API_URL}/api/connection/reject/${request?._id}`,{
                     method:'PUT',
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
