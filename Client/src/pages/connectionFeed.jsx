@@ -14,7 +14,6 @@ const ConnectionFeed = () => {
                 console.log("Token at connection feed before api call",token)
                 setLoading(true)
                 const response = await fetch("http://localhost:5001/api/connection/feed",{
-                  
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
              })

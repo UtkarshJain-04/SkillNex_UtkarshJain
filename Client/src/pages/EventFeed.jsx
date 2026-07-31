@@ -59,8 +59,6 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
       "Loading..."
     ) : (
       <div className="flex flex-col gap-4">
-
-        {/* Top Bar */}
         <div className="flex justify-between items-center m-5">
 
           <div className="flex items-center gap-4">
@@ -104,7 +102,6 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
 
         </div>
 
-        {/* Event Cards */}
         <div className="flex flex-wrap gap-4">
           {(showAiRecommendations ? recommendedEvents : events).map((event) => (
             <EventCard
