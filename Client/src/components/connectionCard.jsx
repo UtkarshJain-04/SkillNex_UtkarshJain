@@ -1,7 +1,7 @@
-
+ import { API_URL } from '../config'
 const ConnectionCard = ({ conn, token, setConnections }) => {
     const handleSendRequest = async()=>{
-        const response = await fetch(`http://localhost:5001/api/connection/send/${conn?._id}`,{
+        const response = await fetch(`${API_URL}/api/connection/send/${conn?._id}`,{
                     method:'POST',
                     headers:{'Content-Type':'application/json',
                     Authorization: `Bearer ${token}`}
@@ -15,7 +15,8 @@ const ConnectionCard = ({ conn, token, setConnections }) => {
     }
 
   return (
-  <a href="" className="hover-3d my-12 mx-1 cursor-pointer block">
+   <div>
+  <a href="#" className="hover-3d my-12 mx-1 cursor-pointer block">
     <div className="card w-68 h-60 bg-black text-white border border-white/10 shadow-xl rounded-2xl overflow-hidden
     bg-[radial-gradient(circle_at_bottom_left,#ffffff04_35%,transparent_36%),radial-gradient(circle_at_top_right,#ffffff04_35%,transparent_36%)] bg-size-[4.95em_4.95em]">
       <div className="card-body p-6">
@@ -56,6 +57,7 @@ const ConnectionCard = ({ conn, token, setConnections }) => {
       </div>
     </div>
   </a>
+    </div>
 );
 };
 

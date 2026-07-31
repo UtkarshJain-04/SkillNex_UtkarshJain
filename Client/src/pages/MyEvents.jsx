@@ -2,6 +2,7 @@ import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import EventCard from "../components/eventCard"
 import {Link} from 'react-router-dom'
+import { API_URL } from '../config'
 
 const MyEvents = () => {
 const {token} =useAuthStore();
@@ -11,7 +12,7 @@ const[myEvents,setMyEvents]=useState([])
         const fetchMyEvents = async()=>{
            try {
               setLoading(true)
-             const response = await fetch('http://localhost:5001/api/event/myevents',{
+             const response = await fetch(`${API_URL}/api/event/myevents`,{
               headers:{
                 'Content-Type':'application/json',
                 Authorization: `Bearer ${token}`

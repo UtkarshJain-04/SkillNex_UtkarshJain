@@ -3,27 +3,31 @@ import { useEffect } from "react"
 import useAuthStore from "../store/useAuthStore.js"
 import {Link} from 'react-router-dom'
 import PeopleCard from "../components/peopleCard.jsx"
+import { API_URL } from '../config'
 
 const ConnectedPeople = () => {
-  const { token, user } = useAuthStore();
-  const [loading, setLoading] = useState(false);
-  const [connected, setConnected] = useState([]);
-  useEffect(() => {
-    const fetchConnected = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "http://localhost:5001/api/connection/accepted",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-        const result = await response.json();
-        if (!response.ok) {
-          throw new Error(result.message);
+    const {token, user} = useAuthStore()
+    const [loading, setLoading] = useState(false)
+    const [connected, setConnected] = useState([])
+    useEffect(()=>{
+        const fetchConnected= async()=>{
+            try {
+                setLoading(true)
+                const response = await fetch(`${API_URL}/api/connection/accepted`,{
+                    headers:{'Content-Type':'application/json',
+                    Authorization: `Bearer ${token}`}
+             })
+                const result = await response.json()
+                if(!response.ok){
+                    throw new Error(result.message)
+                }
+                console.log(result?.myAcceptedConnections)
+                setConnected(result?.myAcceptedConnections)
+            } catch (error) {
+                console.log("Error:", error.message)
+            } finally {
+                setLoading(false)
+            }
         }
         console.log(result?.myAcceptedConnections);
         setConnected(result?.myAcceptedConnections);

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { Link } from 'react-router-dom';
+import { API_URL } from '../config'
+
 
 export default function CreateEvent() {
   const navigate = useNavigate();
@@ -34,6 +36,12 @@ export default function CreateEvent() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+if(formData.endDate < formData.startDate){
+alert("Enter valid End date")
+}
+
+    
     setFormData((prev) => ({
       ...prev,
       [name]: name === "number" || name === "teamSize" ? Number(value) : value,
@@ -46,7 +54,7 @@ export default function CreateEvent() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:5001/api/event/create", {
+      const response = await fetch(`${API_URL}/api/event/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

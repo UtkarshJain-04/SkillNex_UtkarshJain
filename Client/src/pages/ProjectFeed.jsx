@@ -1,7 +1,8 @@
 import { ProjectCard } from "../components/ProjectCard";
 import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
-import {Link} from 'react-router-dom'
+import { API_URL } from '../config'
+import { Link } from 'react-router-dom';
 
 const ProjectFeed = () => {
   const { token } = useAuthStore();
@@ -11,7 +12,7 @@ const ProjectFeed = () => {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:5001/api/project/feed", {
+        const response = await fetch(`${API_URL}/api/project/feed`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

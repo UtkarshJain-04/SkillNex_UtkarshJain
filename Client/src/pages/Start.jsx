@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+
 const Start = () => {
   return (
     <section className="relative min-h-screen overflow-hidden bg-white">

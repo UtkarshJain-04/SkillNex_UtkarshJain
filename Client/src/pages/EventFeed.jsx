@@ -2,6 +2,7 @@ import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import EventCard from "../components/eventCard"
 import {Link} from 'react-router-dom'
+import { API_URL } from '../config'
 
 const EventFeed = () => {
 const {token} =useAuthStore();
@@ -11,7 +12,7 @@ const [recommendedEvents, setRecommendedEvents] = useState([])
 const [showAiRecommendations, setShowAiRecommendations] = useState(false);
   const handleEventAi = async()=>{
       try {
-        const response = await fetch('http://localhost:5001/api/event-ai/analyze',{
+        const response = await fetch(`${API_URL}/api/event-ai/analyze`,{
         headers:{'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`},
         method: "POST"
@@ -33,7 +34,7 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
            try {
               setLoading(true)
             console.log("Event feed Token before api call:", token)
-             const response = await fetch('http://localhost:5001/api/event/eventfeed',{
+             const response = await fetch(`${API_URL}/api/event/eventfeed`,{
               headers:{
                 'Content-Type':'application/json',
                 Authorization: `Bearer ${token}`
@@ -61,7 +62,7 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
       <div className="flex flex-col gap-4">
         <div className="flex justify-between items-center m-5">
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 justify-center">
             {showAiRecommendations && (
               <h2 className="text-2xl font-bold text-emerald-600">
                 AI Recommended Events
@@ -102,7 +103,8 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
 
         </div>
 
-        <div className="flex flex-wrap gap-4">
+        {/* Event Cards */}
+        <div className="flex flex-wrap gap-4 justify-center">
           {(showAiRecommendations ? recommendedEvents : events).map((event) => (
             <EventCard
               key={event._id || event.title || event.Title}

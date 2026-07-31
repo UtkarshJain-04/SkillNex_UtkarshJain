@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { Link } from "react-router-dom";
+import { API_URL } from '../config'
 
 export default function CreateProject() {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ export default function CreateProject() {
     };
     console.log("Data enetered:", data);
     try {
-      const response = await fetch("http://localhost:5001/api/project/create", {
+      const response = await fetch(`${API_URL}/api/project/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

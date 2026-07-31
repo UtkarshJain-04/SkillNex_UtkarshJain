@@ -1,10 +1,16 @@
 const EventCard = ({ event }) => {
   return (
     <a href="" className="hover-3d my-10 mx-3 cursor-pointer block">
+
+const EventCard = ({ event }) => {
+  return (
+    <div>
+    <a href="#" className="hover-3d my-10 mx-3 cursor-pointer block">
       <div className="card w-96 h-134 bg-[#000000] text-white rounded-2xl border border-white/10 shadow-2xl overflow-hidden transition-all duration-300 hover:border-emerald-400/40 hover:shadow-emerald-500/10 bg-[radial-gradient(circle_at_bottom_left,#ffffff04_35%,transparent_36%),radial-gradient(circle_at_top_right,#ffffff04_35%,transparent_36%)] bg-size-[4.95em_4.95em]">
 
         <div className="card-body p-8">
 
+          {/* Header */}
           <div className="flex justify-between items-start mb-3">
 
             <div>
@@ -30,10 +36,12 @@ const EventCard = ({ event }) => {
             </span>
           </div>
 
+          {/* Description */}
           <p className="text-gray-400 text-[15px] leading-7 mb-2 line-clamp-3">
             {event?.description}
           </p>
 
+          {/* Details */}
           <div className="grid grid-cols-2 gap-x-10 gap-y-5">
 
             <div>
@@ -45,6 +53,7 @@ const EventCard = ({ event }) => {
               <p className="text-gray-500 text-sm mb-1">Prize Pool</p>
               <p className="font-medium text-base">
                 ₹{event?.prize?.toString()}
+               
               </p>
             </div>
 
@@ -75,6 +84,7 @@ const EventCard = ({ event }) => {
               <p className="text-gray-500 text-sm mb-1">Team Size</p>
               <p className="text-base">
                 {event?.teamSize === 1 ? "Individual": event?.teamSize}
+               
               </p>
             </div>
 
@@ -104,3 +114,5 @@ const EventCard = ({ event }) => {
 };
 
 export default EventCard;
+   
+

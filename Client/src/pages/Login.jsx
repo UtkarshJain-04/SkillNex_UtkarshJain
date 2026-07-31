@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/useAuthStore";
 import { Link } from 'react-router-dom'
+import { API_URL } from '../config'
 
 const Login = () => {
   const { login } = useAuthStore();
@@ -34,7 +35,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5001/api/auth/login", {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -59,71 +60,7 @@ const Login = () => {
   };
 
   return (
-    // <div className="min-h-screen">
-    //   <img
-    //     src={bg_image}
-    //     alt=""
-    //     className="absolute inset-0 h-full w-full object-cover"
-    //   />
-    //   <div className="flex justify-center absolute inset-0 bg-black/40">
-    //     <form
-    //       onSubmit={handleSubmit}
-    //       className="relative z-10 flex min-h-screen items-center justify-center"
-    //     >
-    //       <fieldset
-    //         className="fieldset w-105
-    //   rounded-3xl
-    //   border border-white/20
-    //   bg-white/10
-    //   backdrop-blur-xl
-    //   shadow-[0_8px_32px_rgba(0,0,0,0.4)]
-    //   p-10 flex flex-col"
-    //       >
-    //         <div className="flex flex-col items-center gap-3">
-    //           <label
-    //             className="label text-base text-white font-semibold"
-    //             htmlFor="Email"
-    //           >
-    //             Email
-    //           </label>
-    //           <input
-    //             type="email"
-    //             id="Email"
-    //             className="input"
-    //             placeholder="Email"
-    //             value={formData.email}
-    //             onChange={handleChange}
-    //             name="email"
-    //           />
-    //           <label
-    //             className="label text-base text-white font-semibold"
-    //             htmlFor="Password"
-    //           >
-    //             Password
-    //           </label>
-    //           <input
-    //             type="password"
-    //             id="Password"
-    //             className="input"
-    //             placeholder="Password"
-    //             name="password"
-    //             value={formData.password}
-    //             onChange={handleChange}
-    //           />
-
-    //           <button
-    //             type="submit"
-    //             className="btn btn-neutral mt-4 w-80"
-    //             disabled={loading}
-    //           >
-    //             {" "}
-    //             {loading ? "Wait for a while" : "Login"}
-    //           </button>
-    //         </div>
-    //       </fieldset>
-    //     </form>
-    //   </div>
-    // </div>
+    
     <div className="min-h-screen bg-gray-100 flex">
 
   {/* Left Side */}
@@ -281,6 +218,14 @@ const Login = () => {
 
 </div>
 
+{toast && (
+
+            <div className="toast toast-top">
+            <div className={`alert ${toast.type === 'success' ? 'alert-success': 'alert-error'}`}>
+            <span>{toast.message}</span>
+            </div>
+            </div>
+        )}
 </div>
   );
 };
