@@ -1,4 +1,4 @@
-import { ProjectCard } from "../components/ProjectCard";
+import { ProjectCard } from "../components/projectCard";
 import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import { API_URL } from '../config'
