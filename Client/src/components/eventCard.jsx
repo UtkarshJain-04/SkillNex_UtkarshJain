@@ -107,8 +107,10 @@ const EventCard = ({ event }) => {
         <div></div>
         <div></div>
     </a>
+    </div>
   );
-};
+      };
+      
 
 export default EventCard;
    
