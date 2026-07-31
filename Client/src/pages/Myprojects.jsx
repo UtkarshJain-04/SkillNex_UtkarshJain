@@ -1,7 +1,7 @@
 import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import {Link} from 'react-router-dom'
-import { ProjectCard } from "../components/ProjectCard"
+import { ProjectCard } from "../components/projectCard"
 import { API_URL } from '../config'
 
 const MyProjects = () => {
