@@ -16,7 +16,7 @@ import Start from "./pages/Start.jsx";
 import ProtectedRoute from "./components/protectedRoute.jsx";
 import PublicRoute from "./components/publicRoute.jsx";
 import Myprojects from "./pages/Myprojects.jsx";
-import MyProfile from "./pages/myProfile.jsx";
+import MyProfile from "./pages/MyProfile.jsx";
 
 function App() {
   return (
