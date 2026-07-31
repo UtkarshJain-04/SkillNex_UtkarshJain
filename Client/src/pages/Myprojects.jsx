@@ -2,6 +2,7 @@ import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import {Link} from 'react-router-dom'
 import { ProjectCard } from "../components/ProjectCard"
+import { API_URL } from '../config'
 
 const MyProjects = () => {
   const { token } = useAuthStore();
@@ -12,7 +13,7 @@ const MyProjects = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          "http://localhost:5001/api/project/myprojects",
+          `${API_URL}/api/project/myprojects`,
           {
             headers: {
               "Content-Type": "application/json",
