@@ -1,6 +1,3 @@
-const EventCard = ({ event }) => {
-  return (
-    <a href="" className="hover-3d my-10 mx-3 cursor-pointer block">
 
 const EventCard = ({ event }) => {
   return (
