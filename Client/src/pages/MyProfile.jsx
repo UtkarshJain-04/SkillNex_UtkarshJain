@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuthStore from "../store/useAuthStore";
+import { API_URL } from '../config'
 
 const MyProfile = () => {
   const [toast, setToast] = useState(null);
@@ -43,7 +44,7 @@ const MyProfile = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/profile/update", {
+      const response = await fetch(`${API_URL}/api/profile/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
