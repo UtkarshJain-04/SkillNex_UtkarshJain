@@ -1,4 +1,4 @@
-import { ProjectCard } from "../components/projectCard";
+import { ProjectCard } from "../components/ProjectCard";
 import useAuthStore from "../store/useAuthStore"
 import { useEffect, useState } from "react"
 import { API_URL } from '../config'
@@ -39,12 +39,18 @@ const ProjectFeed = () => {
         "Loading...."
       ) : (
         <div className="flex flex-col">
-          <div className="mr-5 mt-5 flex justify-end">
+          <div className="mr-5 mt-5 flex gap-3 justify-end">
             <Link
               to="/create-project"
               className="btn bg-yellow-400 text-white font-semibold text-lg rounded-xl"
             >
               Add Project +
+            </Link>
+            <Link
+              to="/myprojects"
+              className="btn bg-orange-400 text-white font-semibold text-lg rounded-xl"
+            >
+              My Projects
             </Link>
           </div>
           <div>
@@ -60,4 +66,4 @@ const ProjectFeed = () => {
   );
 };
 
-export default ProjectFeed
+export default ProjectFeed;

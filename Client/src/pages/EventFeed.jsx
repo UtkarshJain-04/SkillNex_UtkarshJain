@@ -60,8 +60,6 @@ const [showAiRecommendations, setShowAiRecommendations] = useState(false);
       "Loading..."
     ) : (
       <div className="flex flex-col gap-4">
-
-        {/* Top Bar */}
         <div className="flex justify-between items-center m-5">
 
           <div className="flex items-center gap-4 justify-center">

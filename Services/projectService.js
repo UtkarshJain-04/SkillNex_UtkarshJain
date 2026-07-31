@@ -53,8 +53,5 @@ export const getMyProjects = async(userId)=>{
         throw new Error("User not found")
     }
     const myProjects = await findMyProjects(userId)
-    if(myProjects.length===0){
-        throw new Error("No projects! Start Building")
-    }
     return myProjects
 }

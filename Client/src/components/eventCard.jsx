@@ -1,3 +1,6 @@
+const EventCard = ({ event }) => {
+  return (
+    <a href="" className="hover-3d my-10 mx-3 cursor-pointer block">
 
 const EventCard = ({ event }) => {
   return (
@@ -49,7 +52,8 @@ const EventCard = ({ event }) => {
             <div>
               <p className="text-gray-500 text-sm mb-1">Prize Pool</p>
               <p className="font-medium text-base">
-                ₹{event?.prize?.toLocaleString()}
+                ₹{event?.prize?.toString()}
+               
               </p>
             </div>
 
@@ -79,7 +83,8 @@ const EventCard = ({ event }) => {
             <div>
               <p className="text-gray-500 text-sm mb-1">Team Size</p>
               <p className="text-base">
-                {event?.teamSize || "Individual"}
+                {event?.teamSize === 1 ? "Individual": event?.teamSize}
+               
               </p>
             </div>
 
@@ -96,9 +101,18 @@ const EventCard = ({ event }) => {
 
         </div>
       </div>
+       <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </a>
-      </div>
   );
 };
 
 export default EventCard;
+   
+
