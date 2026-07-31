@@ -105,7 +105,6 @@ const Navbar = () => {
                 </svg>{" "}
                 My Events
               </Link>
-              <Link to="/myevents">My Events</Link>
             </li>
             <li>
               <Link to="/accepted-connections">
