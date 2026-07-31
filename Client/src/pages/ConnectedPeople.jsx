@@ -29,14 +29,6 @@ const ConnectedPeople = () => {
                 setLoading(false)
             }
         }
-        console.log(result?.myAcceptedConnections);
-        setConnected(result?.myAcceptedConnections);
-      } catch (error) {
-        console.log("Error:", error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchConnected();
   }, []);
 
